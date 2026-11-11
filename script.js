@@ -8,13 +8,40 @@
     details: 'With the blessings of our families, Vanshika and Swastik invite you to celebrate their engagement.'
   };
 
+  const ART = ['assets/arch-teal.webp', 'assets/garden-chandelier.webp', 'assets/frame-swans.webp'];
+
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
 
   /* ---------- Opener ---------- */
   const cover = document.getElementById('cover');
   const openButton = document.getElementById('open');
   let revealObserver = null;
+
+  const stop = (event) => event.preventDefault();
+  const stopKeys = (event) => {
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key) && event.target !== openButton) {
+      event.preventDefault();
+    }
+  };
+  cover.addEventListener('wheel', stop, { passive: false });
+  cover.addEventListener('touchmove', stop, { passive: false });
+  window.addEventListener('keydown', stopKeys);
+
+  const loadImage = (src) => new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve();
+    img.src = src;
+  });
+  const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  Promise.race([
+    Promise.all([...ART.map(loadImage), fontsReady]),
+    new Promise((resolve) => window.setTimeout(resolve, 5000))
+  ]).then(() => cover.classList.add('ready'));
 
   function startReveals() {
     const items = document.querySelectorAll('.reveal');
@@ -35,15 +62,14 @@
 
   function openInvite() {
     if (cover.classList.contains('open')) return;
-    cover.classList.add('open');
-    window.scrollTo(0, 0);
+    cover.classList.add('ready', 'open');
     startReveals();
     window.setTimeout(() => {
+      cover.removeEventListener('wheel', stop);
+      cover.removeEventListener('touchmove', stop);
+      window.removeEventListener('keydown', stopKeys);
       cover.hidden = true;
       cover.setAttribute('aria-hidden', 'true');
-      root.classList.remove('locked');
-      const first = document.getElementById('beginning');
-      if (first) first.focus({ preventScroll: true });
     }, reduceMotion ? 120 : 1700);
   }
 
@@ -84,7 +110,7 @@
   const ymd = (d) => `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}`;
   const [year, month, day] = EVENT.date.split('-').map(Number);
   const startStr = ymd(new Date(Date.UTC(year, month - 1, day)));
-  const endStr = ymd(new Date(Date.UTC(year, month - 1, day + 1))); // all-day end is exclusive
+  const endStr = ymd(new Date(Date.UTC(year, month - 1, day + 1)));
 
   const googleUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
     + `&text=${encodeURIComponent(EVENT.title)}`
@@ -101,8 +127,8 @@
       `DTSTART;VALUE=DATE:${startStr}`, `DTEND;VALUE=DATE:${endStr}`,
       `SUMMARY:${escapeICS(EVENT.title)}`, `LOCATION:${escapeICS(EVENT.venue)}`,
       `DESCRIPTION:${escapeICS(EVENT.details)}`,
-      'BEGIN:VALARM', 'TRIGGER:-PT6H', 'ACTION:DISPLAY', 'DESCRIPTION:Tomorrow: Vanshika & Swastik\'s engagement', 'END:VALARM',
-      'BEGIN:VALARM', 'TRIGGER:PT9H', 'ACTION:DISPLAY', 'DESCRIPTION:Today: Vanshika & Swastik\'s engagement', 'END:VALARM',
+      'BEGIN:VALARM', 'TRIGGER:-PT6H', 'ACTION:DISPLAY', "DESCRIPTION:Tomorrow: Vanshika & Swastik's engagement", 'END:VALARM',
+      'BEGIN:VALARM', 'TRIGGER:PT9H', 'ACTION:DISPLAY', "DESCRIPTION:Today: Vanshika & Swastik's engagement", 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR'
     ];
     const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
@@ -134,7 +160,6 @@
     }
   }
 
-  // Apple devices get the .ics first; everyone else gets Google Calendar first.
   bindAction(mainCal, isApple ? 'ics' : 'google');
   bindAction(altCal, isApple ? 'google' : 'ics');
   altLabel.textContent = isApple ? 'Use Google Calendar instead' : 'Apple / Outlook (.ics)';

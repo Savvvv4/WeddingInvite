@@ -1,40 +1,32 @@
 <!doctype html>
-<html lang="en" class="locked">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#1d2220">
+  <meta name="theme-color" content="#cfe0d6">
   <title>Vanshika &amp; Swastik | Engagement</title>
   <meta name="description" content="Join Vanshika and Swastik to celebrate their engagement on Wednesday, 2 December 2026 at Myst by The Zora, Lodhi Road, New Delhi.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Vanshika &amp; Swastik | Engagement">
   <meta property="og:description" content="With the blessings of our families, we would be delighted to have you celebrate our engagement.">
+  <meta property="og:image" content="assets/arch-teal.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/arch-teal.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/garden-chandelier.webp">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <noscript><style>.cover{display:none!important}html.locked,html.locked body{overflow:auto;height:auto}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <noscript><style>.cover{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-
-  <!-- Shared ornament library -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <!-- Corner bracket (drawn for top-left, mirrored by CSS) -->
-      <symbol id="corner" viewBox="0 0 48 48">
-        <path d="M2 2H44M2 2V44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.4" fill="currentColor"/>
-      </symbol>
-
-      <!-- Divider: hairlines with a small diamond -->
       <symbol id="divider" viewBox="0 0 160 14">
         <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
           <path d="M2 7H66"/><path d="M94 7H158"/>
         </g>
         <path d="M80 1.5L85.5 7L80 12.5L74.5 7Z" fill="currentColor"/>
       </symbol>
-
-      <!-- Button icons -->
       <symbol id="i-cal" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
           <path d="M7 2.5v3M17 2.5v3M3.5 9.5h17"/>
@@ -55,16 +47,12 @@
       </symbol>
     </defs>
   </svg>
-
   <div class="progress" aria-hidden="true"><span id="progress"></span></div>
-
-  <!-- Landing opener -->
-  <div class="cover" id="cover" role="dialog" aria-modal="true" aria-label="Engagement invitation">
-    <div class="door door-l"></div>
-    <div class="door door-r"></div>
-
-    <div class="cover-stage">
-      <div class="arch">
+  <div class="cover art-teal" id="cover" role="dialog" aria-modal="true" aria-label="Engagement invitation">
+    <div class="door door-l"><span class="door-art"></span></div>
+    <div class="door door-r"><span class="door-art"></span></div>
+    <div class="safe">
+      <div class="content">
         <p class="kicker">You are invited</p>
         <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
         <h1 class="names stacked">Vanshika<span class="amp">&amp;</span>Swastik</h1>
@@ -73,108 +61,68 @@
       </div>
     </div>
   </div>
-
   <main class="invitation">
-
-    <!-- 1 · Names -->
-    <section class="page dark hero" id="beginning" tabindex="-1" aria-label="Engagement invitation">
-      <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
-
-      <div class="content reveal">
-        <p class="kicker">The engagement of</p>
-        <h2 class="names stacked">Vanshika<span class="amp">&amp;</span>Swastik</h2>
-        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-        <p class="date-line">Wednesday<b>·</b>2 December 2026</p>
-        <p class="place-line">New Delhi</p>
+    <section class="page art-garden hero" id="beginning" aria-label="Engagement invitation">
+      <div class="safe">
+        <div class="content reveal">
+          <p class="kicker">The engagement of</p>
+          <h2 class="names stacked">Vanshika<span class="amp">&amp;</span>Swastik</h2>
+          <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+          <p class="date-line">2 December 2026</p>
+          <p class="place-line">Wednesday · New Delhi</p>
+        </div>
       </div>
-
-      <a class="cue" href="#invitation">
-        <span>Turn the page</span>
-        <span class="chevrons" aria-hidden="true"><i></i><i></i></span>
-      </a>
+      <a class="cue" href="#invitation"><span>Turn the page</span><span class="chevrons" aria-hidden="true"><i></i><i></i></span></a>
     </section>
-
-    <!-- 2 · The invitation -->
-    <section class="page light" id="invitation" aria-label="The invitation">
-      <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
-
-      <div class="content reveal">
-        <p class="kicker">Join us</p>
-        <h2 class="headline">Come celebrate<br><em>our engagement</em></h2>
-        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-        <p class="lead">With the blessings of our families, we would be delighted to have you with us.</p>
+    <section class="page art-frame" id="invitation" aria-label="The invitation">
+      <div class="safe">
+        <div class="content reveal">
+          <p class="kicker">Join us</p>
+          <h2 class="headline">Come celebrate<br><em>our engagement</em></h2>
+          <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+          <p class="lead">With the blessings of our families, we would be delighted to have you with us.</p>
+        </div>
       </div>
     </section>
-
-    <!-- 3 · Save the date -->
-    <section class="page dark" id="save-the-date" aria-label="Save the date">
-      <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
-
-      <div class="content reveal">
-        <p class="kicker">Save the date</p>
-        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-        <p class="weekday">Wednesday</p>
-        <p class="bigdate">02</p>
-        <p class="month">December 2026</p>
-        <div class="countdown" id="countdown" aria-live="off"></div>
-        <a class="btn" id="cal-main" href="#" role="button">
-          <svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>
-          <span>Add to Calendar</span>
-        </a>
-        <a class="link" id="cal-alt" href="#">
-          <svg class="icon" aria-hidden="true"><use href="#i-dl"/></svg>
-          <span id="cal-alt-label">Apple / Outlook (.ics)</span>
-        </a>
+    <section class="page art-teal" id="save-the-date" aria-label="Save the date">
+      <div class="safe">
+        <div class="content reveal">
+          <p class="kicker">Save the date</p>
+          <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+          <p class="weekday">Wednesday</p>
+          <p class="bigdate">02</p>
+          <p class="month">December 2026</p>
+          <div class="countdown" id="countdown" aria-live="off"></div>
+          <a class="btn" id="cal-main" href="#" role="button"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span>Add to Calendar</span></a>
+          <a class="link" id="cal-alt" href="#"><svg class="icon" aria-hidden="true"><use href="#i-dl"/></svg><span id="cal-alt-label">Apple / Outlook (.ics)</span></a>
+        </div>
       </div>
     </section>
-
-    <!-- 4 · Venue -->
-    <section class="page light" id="celebration" aria-label="Venue details">
-      <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
-
-      <div class="content reveal">
-        <p class="kicker">The venue</p>
-        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-        <h2 class="venue-name">Myst by The Zora</h2>
-        <p class="venue-addr">Lodhi Road<br>New Delhi</p>
-        <p class="note venue-date">Wednesday, 2 December 2026</p>
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Myst+by+The+Zora+Lodhi+Road+New+Delhi" target="_blank" rel="noopener">
-          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
-          <span>Get Directions</span>
-        </a>
+    <section class="page art-frame" id="celebration" aria-label="Venue details">
+      <div class="safe">
+        <div class="content reveal">
+          <p class="kicker">The venue</p>
+          <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+          <h2 class="venue-name">Myst by The Zora</h2>
+          <p class="venue-addr">Lodhi Road<br>New Delhi</p>
+          <p class="note venue-date">Wednesday, 2 December 2026</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Myst+by+The+Zora+Lodhi+Road+New+Delhi" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Get Directions</span></a>
+        </div>
       </div>
     </section>
-
-    <!-- 5 · Closing -->
-    <section class="page dark" aria-label="A closing note">
-      <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
-      <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
-
-      <div class="content reveal">
-        <p class="kicker">We can't wait to see you</p>
-        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-        <p class="lead">With love and gratitude,</p>
-        <h2 class="names">Vanshika <span class="amp">&amp;</span> Swastik</h2>
-        <p class="date-line">2 December 2026<b>·</b>New Delhi</p>
+    <section class="page art-garden" aria-label="A closing note">
+      <div class="safe">
+        <div class="content reveal">
+          <p class="kicker">We can't wait<br>to see you</p>
+          <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+          <p class="lead">With love and gratitude,</p>
+          <h2 class="names stacked">Vanshika<span class="amp">&amp;</span>Swastik</h2>
+          <p class="date-line">2 December 2026</p>
+          <p class="place-line">New Delhi</p>
+        </div>
       </div>
     </section>
-
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
