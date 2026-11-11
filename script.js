@@ -1,1 +1,59 @@
-const C={date:"2026-12-02",venue:"Mist by The Zora, Lodhi Road, New Delhi",whatsapp:""};const $=s=>document.querySelector(s);const io=new IntersectionObserver(e=>e.forEach(x=>x.target.classList.toggle('in',x.isIntersecting&&x.intersectionRatio>.45)),{threshold:.45});document.querySelectorAll('.scene').forEach(s=>io.observe(s));$('#open').onclick=()=>{$('#gate').classList.add('go');document.body.classList.remove('lock');scrollTo(0,0);for(let i=0;i<14;i++){const p=document.createElement('i');p.className='p';p.style.cssText=`left:${Math.random()*100}%;--dx:${Math.random()*20-10}vw;animation-duration:${9+Math.random()*9}s;animation-delay:${Math.random()*8}s;transform:scale(${.6+Math.random()})`;$('#petals').append(p)}};addEventListener('scroll',()=>$('#bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%',{passive:true});const target=new Date(C.date+"T00:00:00+05:30");(function tick(){let d=Math.max(0,target-Date.now())/1e3;const v=[['Days',86400],['Hrs',3600],['Min',60],['Sec',1]].map(([l,s])=>{const n=Math.floor(d/s);d-=n*s;return `<div>${String(n).padStart(2,'0')}<small>${l}</small></div>`});$('#cd').innerHTML=v.join('');setTimeout(tick,1000)})();$('#ics').onclick=()=>{const a=C.date.replace(/-/g,''),b=new Date(target.getTime()+864e5).toISOString().slice(0,10).replace(/-/g,'');const t=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Vanshika & Swastik's Engagement Celebration\nDTSTART;VALUE=DATE:${a}\nDTEND;VALUE=DATE:${b}\nLOCATION:${C.venue}\nEND:VEVENT\nEND:VCALENDAR`;const l=document.createElement('a');l.href=URL.createObjectURL(new Blob([t],{type:'text/calendar'}));l.download='engagement.ics';l.click();URL.revokeObjectURL(l.href)};$('#f').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);if(!C.whatsapp){alert('RSVP contact details will be shared by the hosts. Please contact them directly to respond.');return}const m=`Hello! ${f.get('n')} – ${f.get('a')} (${f.get('g')}) for Vanshika & Swastik's engagement celebration.${f.get('m')?' Note: '+f.get('m'):''}`;open(`https://wa.me/${C.whatsapp}?text=${encodeURIComponent(m)}`,'_blank')};$('#share').onclick=async()=>{const d={title:"Vanshika & Swastik – Engagement Celebration",text:"Join us to celebrate our engagement.",url:location.href};try{navigator.share?await navigator.share(d):(await navigator.clipboard.writeText(d.url),$('#share').textContent='Link copied ✓')}catch{}};
+const EVENT = {
+  date: '2026-12-02',
+  title: "Vanshika & Swastik's Engagement Celebration",
+  venue: 'Myst by The Zora, Lodhi Road, New Delhi'
+};
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.22 });
+document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+const progress = document.getElementById('progress');
+function updateProgress() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+window.addEventListener('resize', updateProgress);
+updateProgress();
+
+const eventDate = new Date(`${EVENT.date}T00:00:00+05:30`);
+const countdown = document.getElementById('countdown');
+function renderCountdown() {
+  let remaining = Math.max(0, eventDate.getTime() - Date.now());
+  const units = [['Days', 86400000], ['Hours', 3600000], ['Minutes', 60000]];
+  countdown.innerHTML = units.map(([label, size]) => {
+    const value = Math.floor(remaining / size);
+    remaining -= value * size;
+    return `<div>${String(value).padStart(2, '0')}<small>${label}</small></div>`;
+  }).join('');
+}
+renderCountdown();
+setInterval(renderCountdown, 60000);
+
+document.getElementById('add-calendar').addEventListener('click', () => {
+  const start = EVENT.date.replaceAll('-', '');
+  const endDate = new Date(eventDate.getTime() + 86400000);
+  const end = `${endDate.getFullYear()}${String(endDate.getMonth() + 1).padStart(2, '0')}${String(endDate.getDate()).padStart(2, '0')}`;
+  const escapeICS = (value) => value.replaceAll('\\', '\\\\').replaceAll(',', '\\,').replaceAll(';', '\\;').replaceAll('\n', '\\n');
+  const lines = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Engagement Invitation//Vanshika and Swastik//EN',
+    'CALSCALE:GREGORIAN', 'BEGIN:VEVENT', `UID:engagement-${EVENT.date}@invitation`,
+    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`,
+    `DTSTART;VALUE=DATE:${start}`, `DTEND;VALUE=DATE:${end}`,
+    `SUMMARY:${escapeICS(EVENT.title)}`, `LOCATION:${escapeICS(EVENT.venue)}`,
+    'DESCRIPTION:Vanshika and Swastik celebrate their engagement.', 'END:VEVENT', 'END:VCALENDAR'
+  ];
+  const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'Vanshika-and-Swastik-Engagement-Reminder.ics';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+});

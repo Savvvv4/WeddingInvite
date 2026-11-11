@@ -1,23 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Vanshika &amp; Swastik · Engagement Celebration</title>
-<meta name="description" content="Join Vanshika and Swastik as they celebrate their engagement on Wednesday, 2 December 2026 at Mist by The Zora, New Delhi.">
-<meta property="og:title" content="Vanshika &amp; Swastik · Engagement Celebration"><meta property="og:description" content="A promise, a beginning. Celebrate the engagement of Vanshika and Swastik.">
-<meta name="theme-color" content="#f7eee5">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5ead9">
+  <title>Vanshika &amp; Swastik | A Beautiful Beginning</title>
+  <meta name="description" content="A beautiful beginning. Join Vanshika and Swastik as they celebrate their engagement on Wednesday, 2 December 2026 at Myst by The Zora, Lodhi Road, New Delhi.">
+  <meta property="og:title" content="Vanshika &amp; Swastik | A Beautiful Beginning">
+  <meta property="og:description" content="With love and the blessings of our families, we invite you to celebrate our engagement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="lock">
-<div class="bar" id="bar"></div><div class="petals" id="petals"></div>
-<div class="gate" id="gate"><div class="gate-mark">V<span>&amp;</span>S</div><p class="eyebrow">A special celebration</p><p class="gate-title">You're invited</p><button class="btn fill" id="open">Open invitation</button></div>
-<main class="stage">
-<section class="scene s1"><div class="content"><p class="eyebrow r">A promise · A beginning</p><h1 class="names r">Vanshika<span class="amp">&amp;</span>Swastik</h1><p class="date-line r">Wednesday · 2 December 2026</p><span class="hint r">scroll to explore</span></div></section>
-<section class="scene s2"><div class="content"><p class="eyebrow r">Shree Ganeshay Namah</p><p class="serif intro r">With the blessings of our families,</p><p class="serif r">we invite you to join us as we celebrate the engagement of</p><h2 class="names sm r">Vanshika<span class="amp">&amp;</span>Swastik</h2><p class="eyebrow r">And the beginning of forever</p></div></section>
-<section class="scene s3"><div class="content"><p class="eyebrow r">Save the date</p><h2 class="day r">Wednesday</h2><p class="serif big r">02 · 12 · 2026</p><div class="countdown r" id="cd"></div><p class="serif venue-line r"><b>Mist by The Zora</b><br>Lodhi Road, New Delhi</p></div></section>
-<section class="scene s4"><div class="content"><div class="glass r"><p class="eyebrow">The celebration</p><h2 class="day">Mist by The Zora</h2><p class="serif">Lodhi Road, New Delhi</p><iframe class="map" loading="lazy" title="Map showing Mist by The Zora" src="https://www.google.com/maps?q=Mist+by+The+Zora+Lodhi+Road+New+Delhi&amp;output=embed"></iframe><div class="row"><a class="btn fill" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mist+by+The+Zora+Lodhi+Road+New+Delhi">Get directions</a><button class="btn" id="ics">Add to calendar</button></div></div></div></section>
-<section class="scene s5"><div class="content"><p class="eyebrow r">Kindly respond</p><h2 class="day r">We hope you can join us</h2><form class="r" id="f"><input name="n" placeholder="Your name" required aria-label="Your name"><select name="a" aria-label="Attendance"><option>Joyfully accepts</option><option>Regretfully declines</option></select><select name="g" aria-label="Number of guests"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select><textarea name="m" rows="2" placeholder="A note for the couple (optional)" aria-label="A note for the couple"></textarea><button class="btn fill" type="submit">Send response</button></form></div></section>
-<section class="scene s6"><div class="content"><p class="serif closing r">A new chapter begins. We would love to celebrate it with you.</p><h2 class="names sm r">Vanshika<span class="amp">&amp;</span>Swastik</h2><p class="date-line r">2 December 2026 · New Delhi</p><div class="row r"><button class="btn fill" id="share">Share invitation</button></div></div></section>
-</main><script src="script.js"></script></body></html>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+  <main class="invitation">
+    <section class="page hero" id="beginning" aria-label="Engagement invitation cover">
+      <div class="veil"></div>
+      <div class="monogram">V<span>&amp;</span>S</div>
+      <div class="hero-copy reveal">
+        <p class="kicker">A beautiful beginning</p>
+        <h1>Vanshika <span class="and">&amp;</span> Swastik</h1>
+        <div class="fine-rule"><i></i><span>Engagement Celebration</span><i></i></div>
+        <p class="hero-date">Wednesday <b>·</b> 2 December 2026</p>
+      </div>
+      <a class="scroll-cue" href="#invitation" aria-label="Scroll to explore">
+        <span>Scroll to explore</span><span class="arrows"><i></i><i></i></span>
+      </a>
+    </section>
+    <section class="page story" id="invitation" aria-label="The invitation">
+      <div class="paper-panel reveal">
+        <p class="kicker">With the blessings of our families</p>
+        <div class="ornament">❧</div>
+        <h2>A moment to cherish.<br><em>A promise to remember.</em></h2>
+        <p class="body-copy">Some beginnings are made even more beautiful when shared with the people who mean the most.</p>
+        <p class="body-copy">With immense joy, we invite you to join us as we celebrate the engagement of</p>
+        <p class="couple">Vanshika <span>&amp;</span> Swastik</p>
+        <p class="closing-line">and the beginning of a new chapter together.</p>
+      </div>
+    </section>
+    <section class="page promise" aria-label="A new chapter">
+      <div class="promise-copy reveal">
+        <p class="kicker">Two hearts · One beautiful journey</p>
+        <h2>And so,<br><em>the story begins.</em></h2>
+        <p>One promise, a thousand little moments ahead, and a day made special by having you with us.</p>
+        <div class="signature">Vanshika <span>&amp;</span> Swastik</div>
+      </div>
+    </section>
+    <section class="page date-page" id="save-the-date" aria-label="Save the date">
+      <div class="date-card reveal">
+        <p class="kicker">Please save the date</p>
+        <div class="date-flourish">✧</div>
+        <p class="weekday">Wednesday</p>
+        <div class="date-number"><span>02</span><i></i><span>12</span><i></i><span>26</span></div>
+        <p class="month">December <span>2026</span></p>
+        <div class="countdown" id="countdown" aria-live="off"></div>
+        <button class="calendar-button" id="add-calendar" type="button"><span>＋</span> Add a reminder</button>
+        <p class="calendar-note">Keep the day close. We look forward to celebrating with you.</p>
+      </div>
+    </section>
+    <section class="page venue-page" id="celebration" aria-label="Venue details">
+      <div class="venue-card reveal">
+        <p class="kicker">Where we gather</p>
+        <div class="ornament">❧</div>
+        <h2>The celebration</h2>
+        <p class="venue-name">Myst by The Zora</p>
+        <p class="venue-address">Lodhi Road<br>New Delhi</p>
+        <div class="venue-rule"></div>
+        <p class="venue-date">Wednesday, 2 December 2026</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&amp;query=Myst+by+The+Zora+Lodhi+Road+New+Delhi" target="_blank" rel="noopener">View directions <span>↗</span></a>
+      </div>
+    </section>
+    <section class="page farewell" aria-label="A closing note">
+      <div class="farewell-copy reveal">
+        <p class="kicker">Until we celebrate together</p>
+        <h2>It would mean<br><em>the world to us</em></h2>
+        <p>Thank you for being part of our lives and our story. We cannot wait to share this beautiful day with you.</p>
+        <div class="final-monogram">V <span>&amp;</span> S</div>
+        <p class="final-date">2 December 2026 <b>·</b> New Delhi</p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
