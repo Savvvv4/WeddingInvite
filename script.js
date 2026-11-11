@@ -3,14 +3,13 @@
 
   const EVENT = {
     date: '2026-12-02',
-    title: "Vanshika & Swastik's Engagement Ceremony",
+    title: "Vanshika & Swastik's Engagement",
     venue: 'Myst by The Zora, Lodhi Road, New Delhi',
-    details: 'With the blessings of God and our elders, Vanshika and Swastik invite you to bless their engagement.'
+    details: 'With the blessings of our families, Vanshika and Swastik invite you to celebrate their engagement.'
   };
 
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const rand = (min, max) => min + Math.random() * (max - min);
 
   /* ---------- Opener ---------- */
   const cover = document.getElementById('cover');
@@ -34,39 +33,11 @@
     items.forEach((el) => revealObserver.observe(el));
   }
 
-  /* ---------- Falling flowers ---------- */
-  const FLOWERS = [
-    ['marigold', '#f2a516'], ['marigold', '#ff8a1f'], ['marigold', '#ffc933'],
-    ['petal', '#e0527a'], ['petal', '#f08ba5'], ['petal', '#c93a63'],
-    ['blossom', '#f7c6d0'], ['blossom', '#ffd9a8']
-  ];
-
-  function startPetals() {
-    if (reduceMotion) return;
-    const layer = document.getElementById('petals');
-    const count = window.innerWidth < 520 ? 16 : 24;
-    for (let i = 0; i < count; i += 1) {
-      const [symbol, color] = FLOWERS[Math.floor(Math.random() * FLOWERS.length)];
-      const petal = document.createElement('span');
-      petal.className = 'petal';
-      petal.style.setProperty('--x', `${rand(0, 96).toFixed(1)}%`);
-      petal.style.setProperty('--s', `${rand(14, 30).toFixed(0)}px`);
-      petal.style.setProperty('--d', `${rand(9, 17).toFixed(1)}s`);
-      petal.style.setProperty('--delay', `${rand(0, 9).toFixed(1)}s`);
-      petal.style.setProperty('--drift', `${rand(-90, 90).toFixed(0)}px`);
-      petal.style.setProperty('--rot', `${rand(240, 720).toFixed(0)}deg`);
-      petal.style.color = color;
-      petal.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#${symbol}"/></svg>`;
-      layer.appendChild(petal);
-    }
-  }
-
   function openInvite() {
     if (cover.classList.contains('open')) return;
     cover.classList.add('open');
     window.scrollTo(0, 0);
     startReveals();
-    startPetals();
     window.setTimeout(() => {
       cover.hidden = true;
       cover.setAttribute('aria-hidden', 'true');
