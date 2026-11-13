@@ -3,6 +3,7 @@
   const EVENT = window.INVITE;
   const ART = ['assets/arch-teal.webp', 'assets/ganesha.svg', 'assets/lake-swans.webp', 'assets/frame-swans.webp'];
   const root = document.documentElement;
+  root.classList.add('invite-closed');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
@@ -110,7 +111,7 @@
   }
   function openInvite() {
     if (cover.classList.contains('open')) return;
-    Sound.start(); soundButton.classList.add('show'); cover.classList.add('ready', 'open'); startReveals();
+    Sound.start(); soundButton.classList.add('show'); cover.classList.add('ready', 'open'); root.classList.remove('invite-closed'); startReveals();
     window.setTimeout(() => {
       root.classList.remove('locked'); cover.hidden = true; cover.setAttribute('aria-hidden', 'true');
     }, reduceMotion ? 120 : 1700);
