@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#cfe0d6">
+  <meta name="color-scheme" content="light">
   <title>Vanshika &amp; Swastik | Engagement Ceremony</title>
   <meta name="description" content="Join us for the engagement ceremony of Vanshika and Swastik on Wednesday, 2 December 2026 at 6 PM at Myst by The Zora, Lodhi Road, New Delhi.">
   <meta property="og:type" content="website">
@@ -18,6 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <noscript><style>.cover{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <script src="config.js"></script>
+  <script src="viewport.js"></script>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -27,6 +30,18 @@
           <path d="M2 7H66"/><path d="M94 7H158"/>
         </g>
         <path d="M80 1.5L85.5 7L80 12.5L74.5 7Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 2H5Z"/>
+          <path d="M10 21a2 2 0 0 0 4 0"/>
+          <path d="M12 3v2"/>
+        </g>
+      </symbol>
+      <symbol id="i-dl" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/>
+        </g>
       </symbol>
       <symbol id="i-pin" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -53,15 +68,18 @@
 
   <!-- 1 · Cover -->
   <div class="cover art-teal" id="cover" role="dialog" aria-modal="true" aria-label="Engagement invitation">
-    <div class="door door-l"><span class="door-art"></span></div>
-    <div class="door door-r"><span class="door-art"></span></div>
-    <div class="safe">
-      <div class="content">
-        <img class="ganesha" src="assets/ganesha.svg" alt="Lord Ganesha" width="240" height="288">
-        <p class="mantra" lang="sa">ॐ गणेशाय नमः</p>
-        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-        <p class="kicker">You are invited</p>
-        <button class="btn" id="open" type="button">Open Invitation</button>
+    <div class="stage">
+      <div class="door door-l"><span class="door-art"></span></div>
+      <div class="door door-r"><span class="door-art"></span></div>
+      <div class="safe">
+        <div class="content">
+          <img class="ganesha" src="assets/ganesha.svg" alt="Lord Ganesha" width="240" height="288">
+          <p class="mantra" lang="sa">ॐ श्री गणेशाय नमः</p>
+          <p class="mantra-en" lang="en">Om Shree Ganeshaya Namah</p>
+          <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+          <p class="kicker">You are invited</p>
+          <button class="btn" id="open" type="button">Open Invitation</button>
+        </div>
       </div>
     </div>
   </div>
@@ -79,11 +97,11 @@
           <h2 class="names stacked">Vanshika<span class="amp">&amp;</span>Swastik</h2>
         </div>
       </div>
-      <a class="cue" href="#save-the-date"><span>Turn the page</span><span class="chevrons" aria-hidden="true"><i></i><i></i></span></a>
+      <a class="cue" href="#save-the-date"><span>Scroll down</span><span class="chevrons" aria-hidden="true"><i></i><i></i></span></a>
     </section>
 
     <!-- 3 · Save the date -->
-    <section class="page art-teal" id="save-the-date" aria-label="Save the date">
+    <section class="page art-teal dense" id="save-the-date" aria-label="Save the date">
       <div class="safe">
         <div class="content reveal">
           <p class="kicker">Save the date</p>
@@ -93,6 +111,8 @@
           <p class="month">December 2026</p>
           <p class="time">6 PM</p>
           <div class="countdown" id="countdown" aria-live="off"></div>
+          <a class="btn" id="cal-main" href="#" role="button"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span>Add Reminder</span></a>
+          <a class="link" id="cal-alt" href="#"><svg class="icon" aria-hidden="true"><use href="#i-dl"/></svg><span id="cal-alt-label">Apple / Outlook (.ics)</span></a>
         </div>
       </div>
     </section>
@@ -125,6 +145,7 @@
       </div>
     </section>
   </main>
+  <script src="reminder.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
