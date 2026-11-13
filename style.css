@@ -114,3 +114,60 @@ html.locked{overflow:hidden}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-4px)}}
 @media(max-height:559px){html{scroll-snap-type:y proximity}}
 @media(prefers-reduced-motion:reduce){.cue{animation:none}}
+
+
+/* Interaction and scroll stability refinements */
+:root {
+  --page-height: 100vh;
+}
+@supports (height: 100svh) {
+  :root { --page-height: 100svh; }
+}
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+.page {
+  height: var(--page-height);
+  min-height: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+.invitation {
+  opacity: 1;
+  transition: opacity 1.35s ease;
+}
+html.invite-closed .invitation {
+  opacity: 0;
+}
+.content {
+  text-shadow: 0 1px 8px rgba(255, 247, 234, .22);
+}
+.cue {
+  bottom: max(calc(var(--u) * 2.5), calc(env(safe-area-inset-bottom) + 8px));
+  min-height: 24px;
+  gap: 1px;
+  padding: 2px 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ac);
+  text-shadow: 0 1px 5px rgba(255, 247, 234, .75);
+  font-size: max(6px, calc(var(--u) * .75));
+  font-weight: 500;
+  letter-spacing: .18em;
+  animation: none;
+}
+.cue > span:first-child { padding-left: .18em; }
+.chevrons { height: 10px; }
+.chevrons i {
+  width: 5px;
+  height: 5px;
+  margin-top: -2px;
+  animation-duration: 2.2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .invitation { transition: none; }
+  .cue { animation: none; }
+}
