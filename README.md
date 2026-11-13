@@ -17,10 +17,10 @@ Static digital engagement invitation. Built with HTML, CSS and vanilla JavaScrip
 Artwork lives in `assets/`:
 - `arch-teal.webp`: cover and save-the-date background
 - `frame-swans.webp`: venue background
-- `garden-chandelier.webp`: placeholder for screens 2 and 5 until the new background is added
+- `lake-swans.webp`: background for screens 2 and 5
 - `ganesha.svg`: Ganesh ji illustration on the cover
 
-To change the background on screens 2 and 5, edit the `.art-new` rule in `style.css` (see the comment above it).
+To change the background on screens 2 and 5, swap the file and edit the `.art-new` rule in `style.css` (see the comment above it).
 
 ## Sound
 The background sound and the opening chime are synthesised in the browser (Web Audio API), so there are no audio files. Browsers only allow sound after a tap, so it starts when Open Invitation is pressed. A speaker button at the top right turns it off and on.

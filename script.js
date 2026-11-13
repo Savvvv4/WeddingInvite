@@ -3,7 +3,7 @@
 
   const EVENT_START = '2026-12-02T18:00:00+05:30';
 
-  const ART = ['assets/arch-teal.webp', 'assets/ganesha.svg', 'assets/garden-chandelier.webp', 'assets/frame-swans.webp'];
+  const ART = ['assets/arch-teal.webp', 'assets/ganesha.svg', 'assets/lake-swans.webp', 'assets/frame-swans.webp'];
 
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -13,10 +13,10 @@ h1,h2{font-weight:400}
 .art-teal{--art:url(assets/arch-teal.webp);--ar:.624;--bw:.48;--bt:.25;--bb:.70}
 .art-garden{--art:url(assets/garden-chandelier.webp);--ar:.555;--bw:.44;--bt:.44;--bb:.84}
 .art-frame{--art:url(assets/frame-swans.webp);--ar:.565;--bw:.76;--bt:.15;--bb:.73}
-/* Screens 2 and 5. Placeholder artwork until the Pinterest background is added:
-   swap the file below, then set --ar to the image's width/height and tune --bw/--bt/--bb
-   (the text box's width, top and bottom as fractions of the image) to fit its clear area. */
-.art-new{--art:url(assets/garden-chandelier.webp);--ar:.555;--bw:.44;--bt:.44;--bb:.84}
+/* Screens 2 and 5. To change this background: swap the file below, set --ar to the image's
+   width/height, and tune --bw/--bt/--bb (the text box's width, top and bottom as fractions
+   of the image) so the text sits inside the image's clear area. */
+.art-new{--art:url(assets/lake-swans.webp);--ar:.5625;--bw:.58;--bt:.25;--bb:.68}
 .invitation{width:var(--col);margin:0 auto;background:#f6ecd9}
 .page{position:relative;overflow:hidden;height:100svh;container-type:size;background-color:#f6ecd9;background-image:var(--art),radial-gradient(ellipse at 50% 50%,#fff9ed,#e9d9c3);background-position:center;background-size:cover;background-repeat:no-repeat;scroll-snap-align:start;scroll-snap-stop:always}
 .safe{position:absolute;left:0;right:0;top:calc(var(--bt)*100%);height:calc((var(--bb) - var(--bt))*100%);display:grid;place-items:center;text-align:center}
@@ -56,6 +56,7 @@ h1,h2{font-weight:400}
 .invites{margin-top:calc(var(--u)*.5)}
 .note.of{margin:calc(var(--u)*.9) 0 calc(var(--u)*.7)}
 .closing .lead{font-size:max(15px,calc(var(--u)*2.1))}
+.closing .headline{font-size:calc(var(--u)*3.5)}
 .cue{position:absolute;z-index:3;left:50%;bottom:calc(var(--u)*6);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;min-height:44px;color:var(--ac);text-decoration:none;text-shadow:0 0 .7em rgba(255,247,234,.95);font:500 max(10.5px,calc(var(--u)*1.35)) var(--sans);letter-spacing:.3em;text-transform:uppercase;white-space:nowrap}
 .chevrons{display:flex;flex-direction:column;align-items:center;height:20px}
 .chevrons i{width:9px;height:9px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);animation:nudge 1.7s ease-in-out infinite}
