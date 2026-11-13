@@ -111,13 +111,99 @@
   }
   function openInvite() {
     if (cover.classList.contains('open')) return;
-    Sound.start(); soundButton.classList.add('show'); cover.classList.add('ready', 'open'); root.classList.remove('invite-closed'); startReveals();
+    Sound.start();
+    soundButton.classList.add('show');
+    startReveals();
+    // Reveal the first page underneath the opening doors; keep the cover in place
+    // until its fade has completed so no empty/white frame can flash between layers.
+    root.classList.remove('invite-closed');
+    cover.classList.add('ready', 'open');
+    const finishDelay = reduceMotion ? 80 : 1900;
     window.setTimeout(() => {
-      root.classList.remove('locked'); cover.hidden = true; cover.setAttribute('aria-hidden', 'true');
-    }, reduceMotion ? 120 : 1700);
+      cover.hidden = true;
+      cover.setAttribute('aria-hidden', 'true');
+      root.classList.remove('locked');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }, finishDelay);
   }
   openButton.addEventListener('click', openInvite);
   openButton.focus({ preventScroll: true });
+
+  const pages = Array.from(document.querySelectorAll('.invitation > .page'));
+  let navigationLocked = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchHandled = false;
+
+  function currentPageIndex() {
+    const y = window.scrollY;
+    let best = 0;
+    let distance = Infinity;
+    pages.forEach((page, index) => {
+      const d = Math.abs(page.getBoundingClientRect().top);
+      if (d < distance) { distance = d; best = index; }
+    });
+    return best;
+  }
+
+  function goToPage(index) {
+    if (root.classList.contains('locked') || navigationLocked) return;
+    const next = Math.max(0, Math.min(pages.length - 1, index));
+    if (next === currentPageIndex()) return;
+    navigationLocked = true;
+    pages[next].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    window.setTimeout(() => { navigationLocked = false; }, reduceMotion ? 120 : 950);
+  }
+
+  window.addEventListener('wheel', (event) => {
+    if (root.classList.contains('locked') || Math.abs(event.deltaY) < 8) return;
+    event.preventDefault();
+    if (navigationLocked) return;
+    goToPage(currentPageIndex() + (event.deltaY > 0 ? 1 : -1));
+  }, { passive: false });
+
+  window.addEventListener('touchstart', (event) => {
+    if (!event.touches.length) return;
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    touchHandled = false;
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (event) => {
+    if (root.classList.contains('locked') || !event.touches.length) return;
+    const dx = event.touches[0].clientX - touchStartX;
+    const dy = event.touches[0].clientY - touchStartY;
+    if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) {
+      event.preventDefault();
+      touchHandled = true;
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchend', (event) => {
+    if (!touchHandled || root.classList.contains('locked')) return;
+    const touch = event.changedTouches[0];
+    const dy = touch.clientY - touchStartY;
+    if (Math.abs(dy) > 35) goToPage(currentPageIndex() + (dy < 0 ? 1 : -1));
+    touchHandled = false;
+  }, { passive: true });
+
+  window.addEventListener('keydown', (event) => {
+    if (root.classList.contains('locked') || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (['ArrowDown', 'PageDown', ' '].includes(event.key)) {
+      if (event.target.closest('a,button,input,textarea,select')) return;
+      event.preventDefault(); goToPage(currentPageIndex() + 1);
+    } else if (['ArrowUp', 'PageUp'].includes(event.key)) {
+      event.preventDefault(); goToPage(currentPageIndex() - 1);
+    }
+  });
+
+  document.querySelectorAll('.cue[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      const index = pages.indexOf(target);
+      if (index >= 0) { event.preventDefault(); goToPage(index); }
+    });
+  });
 
   const progress = document.getElementById('progress');
   function updateProgress() {
