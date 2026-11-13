@@ -46,5 +46,5 @@
   const isApple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
   bindAction(mainCal, isApple ? 'ics' : 'google');
   bindAction(altCal, isApple ? 'google' : 'ics');
-  if (altLabel) altLabel.textContent = isApple ? 'Use Google Calendar instead' : 'Apple / Outlook (.ics)';
+  if (altLabel) altLabel.textContent = 'Download calendar file (.ics)';
 })();
