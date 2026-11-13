@@ -140,9 +140,22 @@
       document.body.style.right = '';
       document.body.style.width = '';
       root.classList.remove('locked');
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      // Explicitly align the first invitation page, not just the document's
+      // remembered scroll position. This is the engagement ceremony screen.
+      const firstPage = document.getElementById('beginning');
+      const alignFirstPage = () => {
+        if (firstPage) {
+          const top = firstPage.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo(0, top);
+        } else {
+          window.scrollTo(0, 0);
+        }
+        document.documentElement.scrollTop = firstPage ? firstPage.offsetTop : 0;
+        document.body.scrollTop = firstPage ? firstPage.offsetTop : 0;
+      };
+      alignFirstPage();
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        alignFirstPage();
         inviteOpened = true;
         navigationLocked = false;
       }));
