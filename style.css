@@ -13,6 +13,10 @@ h1,h2{font-weight:400}
 .art-teal{--art:url(assets/arch-teal.webp);--ar:.624;--bw:.48;--bt:.25;--bb:.70}
 .art-garden{--art:url(assets/garden-chandelier.webp);--ar:.555;--bw:.44;--bt:.44;--bb:.84}
 .art-frame{--art:url(assets/frame-swans.webp);--ar:.565;--bw:.76;--bt:.15;--bb:.73}
+/* Screens 2 and 5. Placeholder artwork until the Pinterest background is added:
+   swap the file below, then set --ar to the image's width/height and tune --bw/--bt/--bb
+   (the text box's width, top and bottom as fractions of the image) to fit its clear area. */
+.art-new{--art:url(assets/garden-chandelier.webp);--ar:.555;--bw:.44;--bt:.44;--bb:.84}
 .invitation{width:var(--col);margin:0 auto;background:#f6ecd9}
 .page{position:relative;overflow:hidden;height:100svh;container-type:size;background-color:#f6ecd9;background-image:var(--art),radial-gradient(ellipse at 50% 50%,#fff9ed,#e9d9c3);background-position:center;background-size:cover;background-repeat:no-repeat;scroll-snap-align:start;scroll-snap-stop:always}
 .safe{position:absolute;left:0;right:0;top:calc(var(--bt)*100%);height:calc((var(--bb) - var(--bt))*100%);display:grid;place-items:center;text-align:center}
@@ -30,6 +34,7 @@ h1,h2{font-weight:400}
 .weekday{font:500 max(11px,calc(var(--u)*1.45)) var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--ink)}
 .bigdate{font:300 calc(var(--u)*9.4)/.95 var(--serif);color:var(--ink);margin-top:calc(var(--u)*.6)}
 .month{font:italic 400 calc(var(--u)*3.2) var(--serif);letter-spacing:.05em;color:var(--ac)}
+.time{font:500 max(12px,calc(var(--u)*1.7)) var(--sans);letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:var(--ink);margin-top:calc(var(--u)*1.6)}
 .countdown{display:flex;justify-content:center;gap:calc(var(--u)*2.4);width:100%;margin:calc(var(--u)*2.4) 0;padding:calc(var(--u)*1.4) 0;border-block:1px solid var(--line)}
 .countdown div{font:400 calc(var(--u)*3.3)/1 var(--serif);color:var(--ink);min-width:2.2em}
 .countdown small{display:block;margin-top:.35em;font:500 max(9px,calc(var(--u)*1.1)) var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
@@ -40,10 +45,17 @@ h1,h2{font-weight:400}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:max(46px,calc(var(--u)*5.6));padding:0 calc(var(--u)*3.4);border-radius:99px;border:1px solid var(--btn-bd);background:var(--btn-bg);color:var(--btn-fg);text-shadow:none;font:500 max(11px,calc(var(--u)*1.4))/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap;box-shadow:0 8px 22px rgba(47,74,69,.28);transition:transform .2s ease,box-shadow .2s ease}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(47,74,69,.34)}
 .btn:active{transform:translateY(0)}
-.btn:focus-visible,.link:focus-visible,.cue:focus-visible{outline:2px solid var(--ac);outline-offset:4px}
+.btn:focus-visible,.cue:focus-visible,.sound:focus-visible{outline:2px solid var(--ac);outline-offset:4px}
 .icon{width:19px;height:19px;flex:none;color:currentColor}
-.link{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:calc(var(--u)*.8);font:500 max(11px,calc(var(--u)*1.35)) var(--sans);letter-spacing:.1em;color:var(--ac);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
-.link .icon{width:16px;height:16px}
+.tight .headline{font-size:calc(var(--u)*3.9);margin-top:0}
+.tight .names{font-size:calc(var(--u)*4.3)}
+.tight .divider{margin:calc(var(--u)*1.7) auto}
+.tight .note{font-size:max(15px,calc(var(--u)*2.1))}
+.tight .kicker{letter-spacing:.17em;white-space:nowrap}
+.closing .date-line{letter-spacing:.1em;white-space:nowrap}
+.invites{margin-top:calc(var(--u)*.5)}
+.note.of{margin:calc(var(--u)*.9) 0 calc(var(--u)*.7)}
+.closing .lead{font-size:max(15px,calc(var(--u)*2.1))}
 .cue{position:absolute;z-index:3;left:50%;bottom:calc(var(--u)*6);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;min-height:44px;color:var(--ac);text-decoration:none;text-shadow:0 0 .7em rgba(255,247,234,.95);font:500 max(10.5px,calc(var(--u)*1.35)) var(--sans);letter-spacing:.3em;text-transform:uppercase;white-space:nowrap}
 .chevrons{display:flex;flex-direction:column;align-items:center;height:20px}
 .chevrons i{width:9px;height:9px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);animation:nudge 1.7s ease-in-out infinite}
@@ -61,10 +73,16 @@ h1,h2{font-weight:400}
 .cover.open .door-l{transform:translateX(-101%)}
 .cover.open .door-r{transform:translateX(101%)}
 .cover.open .content{opacity:0;transform:scale(1.05);pointer-events:none;transition-delay:0s}
-.cover .names{margin:calc(var(--u)*.4) 0 0}
-.cover .date-line{margin:calc(var(--u)*1.8) 0 calc(var(--u)*3.2)}
+.ganesha{display:block;height:calc(var(--u)*23);width:auto;aspect-ratio:240/288;filter:drop-shadow(0 .35em .7em rgba(122,92,46,.2))}
+.mantra{margin-top:calc(var(--u)*.6);font:400 calc(var(--u)*3.3)/1.35 'Tiro Devanagari Hindi',var(--serif);color:var(--ink);white-space:nowrap}
+.cover .divider{margin:calc(var(--u)*1.5) auto calc(var(--u)*1.7)}
+.cover .kicker{margin-bottom:calc(var(--u)*2.6)}
+.sound{position:fixed;z-index:120;top:max(12px,env(safe-area-inset-top));left:calc(50% + var(--col)/2 - 56px);width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--btn-bd);background:rgba(47,74,69,.9);color:var(--btn-fg);cursor:pointer;box-shadow:0 6px 16px rgba(47,74,69,.3);opacity:0;pointer-events:none;transition:opacity .6s ease .6s,transform .2s ease}
+.sound.show{opacity:1;pointer-events:auto}
+.sound:hover{transform:scale(1.06)}
+.sound[hidden]{display:none}
 .progress{position:fixed;z-index:60;top:0;left:0;width:100%;height:2px;background:rgba(122,92,46,.15);pointer-events:none}
 .progress span{display:block;height:100%;width:0;background:#c9ab6b;transition:width .08s linear}
 .reveal{opacity:0;transform:translateY(calc(var(--u)*2.4));transition:opacity 1s ease .2s,transform 1s cubic-bezier(.2,.7,.2,1) .2s}
 .reveal.visible{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.chevrons i{animation:none}.door,.cover .content{transition-duration:.01s;transition-delay:0s}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.chevrons i{animation:none}.door,.cover .content{transition-duration:.01s;transition-delay:0s}.sound{transition:none}}
