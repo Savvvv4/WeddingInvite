@@ -91,6 +91,7 @@
   const cover = document.getElementById('cover');
   const openButton = document.getElementById('open');
   let revealObserver = null;
+  let bodyLockTop = 0;
   root.classList.add('locked');
   const loadImage = (src) => new Promise((resolve) => {
     const img = new Image(); img.onload = () => resolve(); img.onerror = () => resolve(); img.src = src;
@@ -116,20 +117,35 @@
     startReveals();
     // Reveal the first page underneath the opening doors; keep the cover in place
     // until its fade has completed so no empty/white frame can flash between layers.
+    // Freeze the document itself while the cover animates. This prevents queued
+    // wheel/touch input from moving the page underneath the fixed cover.
+    bodyLockTop = window.scrollY || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `${-bodyLockTop}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    root.classList.add('locked');
     root.classList.remove('invite-closed');
     cover.classList.add('ready', 'open');
     const finishDelay = reduceMotion ? 80 : 1900;
     window.setTimeout(() => {
       cover.hidden = true;
       cover.setAttribute('aria-hidden', 'true');
-      // Establish a clean starting position before enabling any page navigation.
+      // Release the document lock at the top of the invitation, then verify
+      // the first section is aligned before accepting the first user gesture.
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
       root.classList.remove('locked');
-      window.scrollTo(0, 0);
-      requestAnimationFrame(() => {
-        window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         inviteOpened = true;
         navigationLocked = false;
-      });
+      }));
     }, finishDelay);
   }
   openButton.addEventListener('click', openInvite);
@@ -166,7 +182,11 @@
   }
 
   window.addEventListener('wheel', (event) => {
-    if (!inviteOpened || root.classList.contains('locked') || Math.abs(event.deltaY) < 8) return;
+    if (!inviteOpened || root.classList.contains('locked')) {
+      event.preventDefault();
+      return;
+    }
+    if (Math.abs(event.deltaY) < 8) return;
     event.preventDefault();
     window.clearTimeout(wheelIdleTimer);
     if (wheelGestureActive || navigationLocked) {
@@ -186,7 +206,11 @@
   }, { passive: true });
 
   window.addEventListener('touchmove', (event) => {
-    if (!inviteOpened || root.classList.contains('locked') || !event.touches.length) return;
+    if (!inviteOpened || root.classList.contains('locked')) {
+      event.preventDefault();
+      return;
+    }
+    if (!event.touches.length) return;
     const dx = event.touches[0].clientX - touchStartX;
     const dy = event.touches[0].clientY - touchStartY;
     if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) {
