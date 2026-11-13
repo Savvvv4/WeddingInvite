@@ -323,3 +323,7 @@ body { overflow-x: hidden; }
 .dense .countdown b{display:block;font:400 calc(var(--u)*2.7)/1 var(--serif);color:var(--ink)}
 .dense .countdown small{margin-top:.45em;font:500 max(8.5px,calc(var(--u)*1))/1 var(--sans);letter-spacing:.16em}
 .dense .countdown p{padding:0 calc(var(--u)*1.4);font-size:calc(var(--u)*2.2)}
+
+/* One button size everywhere */
+.btn,.dense .btn{box-sizing:border-box;width:clamp(220px,calc(var(--u)*27),calc(100vw - 64px));max-width:none;flex:none;min-height:0;height:max(44px,calc(var(--u)*5));padding:0 16px;margin-top:0}
+.venue-addr{margin-bottom:calc(var(--u)*2.6)}
