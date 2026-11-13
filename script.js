@@ -122,15 +122,24 @@
     window.setTimeout(() => {
       cover.hidden = true;
       cover.setAttribute('aria-hidden', 'true');
+      // Establish a clean starting position before enabling any page navigation.
       root.classList.remove('locked');
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        inviteOpened = true;
+        navigationLocked = false;
+      });
     }, finishDelay);
   }
   openButton.addEventListener('click', openInvite);
   openButton.focus({ preventScroll: true });
 
   const pages = Array.from(document.querySelectorAll('.invitation > .page'));
-  let navigationLocked = false;
+  let navigationLocked = true;
+  let inviteOpened = false;
+  let wheelGestureActive = false;
+  let wheelIdleTimer = 0;
   let touchStartX = 0;
   let touchStartY = 0;
   let touchHandled = false;
@@ -147,19 +156,26 @@
   }
 
   function goToPage(index) {
-    if (root.classList.contains('locked') || navigationLocked) return;
+    if (!inviteOpened || root.classList.contains('locked') || navigationLocked) return;
     const next = Math.max(0, Math.min(pages.length - 1, index));
     if (next === currentPageIndex()) return;
     navigationLocked = true;
-    pages[next].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-    window.setTimeout(() => { navigationLocked = false; }, reduceMotion ? 120 : 950);
+    const targetTop = Math.max(0, pages[next].getBoundingClientRect().top + window.scrollY);
+    window.scrollTo({ top: targetTop, behavior: reduceMotion ? 'auto' : 'smooth' });
+    window.setTimeout(() => { navigationLocked = false; }, reduceMotion ? 180 : 1350);
   }
 
   window.addEventListener('wheel', (event) => {
-    if (root.classList.contains('locked') || Math.abs(event.deltaY) < 8) return;
+    if (!inviteOpened || root.classList.contains('locked') || Math.abs(event.deltaY) < 8) return;
     event.preventDefault();
-    if (navigationLocked) return;
+    window.clearTimeout(wheelIdleTimer);
+    if (wheelGestureActive || navigationLocked) {
+      wheelIdleTimer = window.setTimeout(() => { wheelGestureActive = false; }, 260);
+      return;
+    }
+    wheelGestureActive = true;
     goToPage(currentPageIndex() + (event.deltaY > 0 ? 1 : -1));
+    wheelIdleTimer = window.setTimeout(() => { wheelGestureActive = false; }, 260);
   }, { passive: false });
 
   window.addEventListener('touchstart', (event) => {
@@ -170,7 +186,7 @@
   }, { passive: true });
 
   window.addEventListener('touchmove', (event) => {
-    if (root.classList.contains('locked') || !event.touches.length) return;
+    if (!inviteOpened || root.classList.contains('locked') || !event.touches.length) return;
     const dx = event.touches[0].clientX - touchStartX;
     const dy = event.touches[0].clientY - touchStartY;
     if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) {
@@ -180,7 +196,7 @@
   }, { passive: false });
 
   window.addEventListener('touchend', (event) => {
-    if (!touchHandled || root.classList.contains('locked')) return;
+    if (!inviteOpened || !touchHandled || root.classList.contains('locked')) return;
     const touch = event.changedTouches[0];
     const dy = touch.clientY - touchStartY;
     if (Math.abs(dy) > 35) goToPage(currentPageIndex() + (dy < 0 ? 1 : -1));
@@ -188,7 +204,7 @@
   }, { passive: true });
 
   window.addEventListener('keydown', (event) => {
-    if (root.classList.contains('locked') || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (!inviteOpened || root.classList.contains('locked') || event.altKey || event.ctrlKey || event.metaKey) return;
     if (['ArrowDown', 'PageDown', ' '].includes(event.key)) {
       if (event.target.closest('a,button,input,textarea,select')) return;
       event.preventDefault(); goToPage(currentPageIndex() + 1);
