@@ -1,92 +1,49 @@
 (() => {
   'use strict';
   const EVENT = window.INVITE;
-  const ART = ['assets/arch-teal.webp', 'assets/ganesha.svg', 'assets/lake-swans.webp', 'assets/frame-swans.webp'];
+  const ART = ['assets/arch-teal.webp', 'assets/ganesha.webp', 'assets/lake-swans.webp', 'assets/frame-swans.webp'];
   const root = document.documentElement;
   root.classList.add('invite-closed');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
 
-  const Sound = (() => {
-    const AC = window.AudioContext || window.webkitAudioContext;
-    const LEVEL = 0.6;
-    const SPARKLE_NOTES = [74, 76, 78, 81, 83, 86, 88];
-    let ctx = null, master = null, started = false, enabled = true, timer = 0, lastNote = -1;
-    const hz = (midi) => 440 * Math.pow(2, (midi - 69) / 12);
-    function bell(freq, when, volume, decay) {
-      const out = ctx.createGain();
-      out.gain.setValueAtTime(0.0001, when);
-      out.gain.exponentialRampToValueAtTime(volume, when + 0.008);
-      out.gain.exponentialRampToValueAtTime(0.0001, when + decay);
-      out.connect(master);
-      [[1,1],[2.01,.42],[2.76,.22],[5.4,.08]].forEach(([ratio, amount]) => {
-        const osc = ctx.createOscillator(), gain = ctx.createGain();
-        osc.type = 'sine'; osc.frequency.value = freq * ratio; gain.gain.value = amount;
-        osc.connect(gain); gain.connect(out); osc.start(when); osc.stop(when + decay + .1);
-      });
+  // Background music: starts as soon as the browser allows it. Most phones block
+  // sound until the guest touches the page, so we also start it on the very first
+  // tap, swipe, scroll or key press (at the latest, on "Open Invitation").
+  const music = document.getElementById('music');
+  const Music = (() => {
+    const TARGET = 0.7;
+    let playing = false, fadeTimer = 0;
+    function fadeIn() {
+      window.clearInterval(fadeTimer);
+      music.volume = 0;
+      fadeTimer = window.setInterval(() => {
+        music.volume = Math.min(TARGET, music.volume + 0.05);
+        if (music.volume >= TARGET) window.clearInterval(fadeTimer);
+      }, 90);
     }
-    function chime() {
-      const t = ctx.currentTime + .05;
-      bell(hz(50), t, .2, 5);
-      [74,78,81,86,90].forEach((note,i) => bell(hz(note), t + .22 + i*.12, .11, 3.4));
+    function play() {
+      if (!music || playing) return;
+      const attempt = music.play();
+      if (attempt && attempt.then) {
+        attempt.then(() => { if (!playing) { playing = true; fadeIn(); detach(); } }).catch(() => {});
+      } else { playing = true; detach(); }
     }
-    function pad() {
-      const now = ctx.currentTime, filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass'; filter.frequency.value = 520; filter.Q.value = .6;
-      const lfo = ctx.createOscillator(), lfoDepth = ctx.createGain();
-      lfo.frequency.value = .07; lfoDepth.gain.value = 180; lfo.connect(lfoDepth); lfoDepth.connect(filter.frequency); lfo.start();
-      const fade = ctx.createGain();
-      fade.gain.setValueAtTime(.0001, now); fade.gain.linearRampToValueAtTime(.5, now + 6);
-      filter.connect(fade); fade.connect(master);
-      [[38,'triangle',-4],[38,'triangle',4],[45,'sine',0],[50,'triangle',3],[57,'sine',-3]].forEach(([midi,type,detune]) => {
-        const osc = ctx.createOscillator(), gain = ctx.createGain();
-        osc.type = type; osc.frequency.value = hz(midi); osc.detune.value = detune;
-        gain.gain.value = midi < 40 ? .22 : .12; osc.connect(gain); gain.connect(filter); osc.start();
-      });
-    }
-    function sparkle() {
-      if (!enabled) return;
-      let index;
-      do { index = Math.floor(Math.random() * SPARKLE_NOTES.length); } while (index === lastNote);
-      lastNote = index; bell(hz(SPARKLE_NOTES[index]), ctx.currentTime + .05, .05, 4);
-      timer = window.setTimeout(sparkle, 3200 + Math.random() * 3800);
-    }
-    function start() {
-      if (!AC || started) return;
-      try {
-        ctx = new AC();
-        const limiter = ctx.createDynamicsCompressor();
-        master = ctx.createGain(); master.gain.value = LEVEL; master.connect(limiter); limiter.connect(ctx.destination);
-        if (ctx.state === 'suspended') ctx.resume();
-        started = true; chime(); pad(); timer = window.setTimeout(sparkle, 3500);
-      } catch (error) { started = false; }
-    }
-    function setEnabled(on) {
-      enabled = on;
-      if (!started) return;
-      window.clearTimeout(timer);
-      const now = ctx.currentTime;
-      master.gain.cancelScheduledValues(now);
-      master.gain.setTargetAtTime(on ? LEVEL : 0, now, on ? .4 : .15);
-      if (on) { ctx.resume(); timer = window.setTimeout(sparkle, 1500); }
+    const EVENTS = ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown', 'wheel'];
+    function detach() { EVENTS.forEach((type) => window.removeEventListener(type, play, true)); }
+    EVENTS.forEach((type) => window.addEventListener(type, play, { capture: true, passive: true }));
+    if (music) {
+      music.volume = TARGET;
+      music.addEventListener('playing', () => { playing = true; detach(); });
+      play();
     }
     document.addEventListener('visibilitychange', () => {
-      if (!ctx) return;
-      if (document.hidden) ctx.suspend(); else if (enabled) ctx.resume();
+      if (!music || !playing) return;
+      if (document.hidden) music.pause(); else music.play().catch(() => {});
     });
-    return { start, setEnabled, supported: !!AC, get enabled() { return enabled; } };
+    return { play };
   })();
-
-  const soundButton = document.getElementById('sound');
-  const soundIcon = document.getElementById('sound-icon');
-  if (!Sound.supported) soundButton.hidden = true;
-  soundButton.addEventListener('click', () => {
-    const on = !Sound.enabled;
-    Sound.setEnabled(on);
-    soundIcon.setAttribute('href', on ? '#i-sound-on' : '#i-sound-off');
-    soundButton.setAttribute('aria-label', on ? 'Turn music off' : 'Turn music on');
-  });
 
   const cover = document.getElementById('cover');
   const openButton = document.getElementById('open');
@@ -112,8 +69,7 @@
   }
   function openInvite() {
     if (cover.classList.contains('open')) return;
-    Sound.start();
-    soundButton.classList.add('show');
+    Music.play();
     startReveals();
     // Reveal the first page underneath the opening doors; keep the cover in place
     // until its fade has completed so no empty/white frame can flash between layers.

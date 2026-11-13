@@ -53,13 +53,21 @@
     window.setTimeout(() => URL.revokeObjectURL(url), 1500);
   }
 
-  const isApple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
-  if (isApple) {
-    mainCal.href = '#';
-    mainCal.addEventListener('click', (event) => { event.preventDefault(); downloadICS(); });
-  } else {
-    mainCal.href = googleUrl;
-    mainCal.target = '_blank';
-    mainCal.rel = 'noopener';
+  const altCal = document.getElementById('cal-alt');
+  function bind(el, action) {
+    if (!el) return;
+    if (action === 'google') {
+      el.href = googleUrl; el.target = '_blank'; el.rel = 'noopener';
+    } else {
+      el.href = '#';
+      el.addEventListener('click', (event) => { event.preventDefault(); downloadICS(); });
+    }
   }
+
+  // Apple devices get a calendar file (opens straight in Apple Calendar);
+  // everyone else goes to Google Calendar. The small link offers the other one.
+  const isApple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+  bind(mainCal, isApple ? 'ics' : 'google');
+  bind(altCal, isApple ? 'google' : 'ics');
+  if (altCal) altCal.textContent = isApple ? 'or add to Google Calendar' : 'or add to Apple / Outlook calendar';
 })();

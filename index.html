@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#cfe0d6">
   <meta name="color-scheme" content="light">
   <title>Vanshika &amp; Swastik | Engagement Ceremony</title>
-  <meta name="description" content="Join us for the engagement ceremony of Vanshika and Swastik on Wednesday, 2 December 2026 at 6 PM at Myst by The Zora, Lodhi Road, New Delhi.">
+  <meta name="description" content="Join us for the engagement ceremony of Vanshika and Swastik on Wednesday, 2 December 2026 at 6 PM at MYST by The Zora, Jawahar Lal Nehru Stadium, Lodhi Road, New Delhi.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Vanshika &amp; Swastik | Engagement Ceremony">
   <meta property="og:description" content="The Khandelwal family cordially invites you to the engagement ceremony of Vanshika &amp; Swastik.">
@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="assets/arch-teal.webp" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/ganesha.svg">
+  <link rel="preload" as="image" href="assets/ganesha.webp">
   <link rel="preload" as="image" href="assets/lake-swans.webp">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <noscript><style>.cover{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <script src="config.js"></script>
@@ -43,22 +43,22 @@
           <circle cx="12" cy="10.5" r="2.4"/>
         </g>
       </symbol>
-      <symbol id="i-sound-on" viewBox="0 0 24 24">
+      <symbol id="i-cal" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4Z"/>
-          <path d="M15.5 9a4 4 0 0 1 0 6M18.3 6.3a8 8 0 0 1 0 11.4"/>
+          <rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/>
+          <path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/>
         </g>
       </symbol>
-      <symbol id="i-sound-off" viewBox="0 0 24 24">
+      <symbol id="i-mail" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4Z"/>
-          <path d="M16 9.5l5 5M21 9.5l-5 5"/>
+          <rect x="3" y="5.5" width="18" height="13" rx="2"/>
+          <path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>
         </g>
       </symbol>
     </defs>
   </svg>
   <div class="progress" aria-hidden="true"><span id="progress"></span></div>
-  <button class="sound" id="sound" type="button" aria-label="Turn music off"><svg class="icon" aria-hidden="true"><use id="sound-icon" href="#i-sound-on"/></svg></button>
+  <audio id="music" src="assets/music.mp3" preload="auto" loop autoplay playsinline></audio>
 
   <!-- 1 · Cover -->
   <div class="cover art-teal" id="cover" role="dialog" aria-modal="true" aria-label="Engagement invitation">
@@ -67,11 +67,12 @@
       <div class="door door-r"><span class="door-art"></span></div>
       <div class="safe">
         <div class="content">
-          <img class="ganesha" src="assets/ganesha.svg" alt="Lord Ganesha" width="240" height="288">
-          <p class="mantra" lang="sa">ॐ श्री गणेशाय नमः</p>
+          <img class="ganesha" src="assets/ganesha.webp" alt="Lord Ganesha seated on a lotus" width="738" height="470">
+          <p class="mantra" lang="sa">॥ श्री गणेशाय नमः ॥</p>
           <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
           <p class="kicker">You are invited</p>
-          <button class="btn" id="open" type="button">Open Invitation</button>
+          <button class="btn btn-open" id="open" type="button"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Open Invitation</span></button>
+          <p class="hint">Tap to open</p>
         </div>
       </div>
     </div>
@@ -79,18 +80,18 @@
 
   <main class="invitation">
     <!-- 2 · The family invites you -->
-    <section class="page art-new tight hero" id="beginning" aria-label="Engagement invitation">
+    <section class="page art-new hero" id="beginning" aria-label="Engagement invitation">
       <div class="safe">
         <div class="content reveal">
-          <p class="kicker">The Khandelwal family</p>
-          <p class="note invites">cordially invites you to the</p>
+          <p class="kicker">The Khandelwal Family</p>
+          <p class="note">cordially invites you to the</p>
           <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-          <h2 class="headline">Engagement<br><em>Ceremony</em></h2>
+          <h1 class="event-title">Engagement Ceremony</h1>
           <p class="note of">of</p>
           <h2 class="names stacked">Vanshika<span class="amp">&amp;</span>Swastik</h2>
         </div>
       </div>
-      <a class="cue" href="#save-the-date"><span>Scroll down</span><span class="chevrons" aria-hidden="true"><i></i><i></i></span></a>
+      <a class="cue" href="#save-the-date"><span class="chevrons" aria-hidden="true"><i></i><i></i></span><span>Swipe up</span></a>
     </section>
 
     <!-- 3 · Save the date -->
@@ -102,9 +103,10 @@
           <p class="weekday">Wednesday</p>
           <p class="bigdate">02</p>
           <p class="month">December 2026</p>
-          <p class="time">6 PM</p>
+          <p class="time">6 PM onwards</p>
           <div class="countdown" id="countdown" aria-live="off"></div>
-          <a class="btn" id="cal-main" href="#" role="button"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span>Add Reminder</span></a>
+          <a class="btn" id="cal-main" href="#" role="button"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span>Add to Calendar</span></a>
+          <a class="link" id="cal-alt" href="#">Add to Google Calendar</a>
         </div>
       </div>
     </section>
@@ -113,26 +115,26 @@
     <section class="page art-frame" id="celebration" aria-label="Venue details">
       <div class="safe">
         <div class="content reveal">
-          <p class="kicker">The venue</p>
+          <p class="kicker">The Venue</p>
           <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-          <h2 class="venue-name">Myst by The Zora</h2>
-          <p class="venue-addr">Lodhi Road<br>New Delhi</p>
-          <p class="note venue-date">Wednesday, 2 December 2026</p>
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Myst+by+The+Zora+Lodhi+Road+New+Delhi" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Get Directions</span></a>
+          <h2 class="venue-name"><span class="venue-brand">MYST</span> by The Zora</h2>
+          <p class="venue-addr">Jawahar Lal Nehru Stadium<br>Lodhi Road, New Delhi</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=MYST+by+The+Zora+Jawahar+Lal+Nehru+Stadium+Lodhi+Road+New+Delhi" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Get Directions</span></a>
+          <p class="btn-hint">Opens in Google Maps</p>
         </div>
       </div>
     </section>
 
     <!-- 5 · Closing -->
-    <section class="page art-new tight closing" aria-label="A closing note">
+    <section class="page art-new closing" aria-label="A closing note">
       <div class="safe">
         <div class="content reveal">
           <h2 class="headline">Come join us<br><em>&amp; bless the couple</em></h2>
           <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-          <p class="lead">With love and gratitude,</p>
-          <h2 class="names stacked">Sunita<span class="amp">&amp;</span>Vikrant</h2>
+          <p class="note">With love and gratitude,</p>
+          <h2 class="names inline">Sunita <span class="amp">&amp;</span> Vikrant</h2>
           <p class="date-line">2 December 2026 · 6 PM</p>
-          <p class="place-line">Myst by The Zora</p>
+          <p class="place-line">MYST by The Zora · New Delhi</p>
         </div>
       </div>
     </section>
