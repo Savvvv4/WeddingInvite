@@ -327,3 +327,27 @@ body { overflow-x: hidden; }
 .closing .when-where{display:flex;flex-direction:column;align-items:center;margin-top:calc(var(--u)*4);padding-top:calc(var(--u)*2.4);border-top:1px solid var(--line);width:min(100%,calc(var(--u)*26))}
 .closing .date-line{margin:0;letter-spacing:.16em}
 .closing .place-line{margin-top:calc(var(--u)*1);line-height:1.9}
+
+/* Roomier layout (Nov 13): larger invite line, spread-out save-the-date, bigger address, airier sign-off */
+/* Screen 2 — family invites you */
+.hero{--bt:.21;--bb:.72;--bw:.68}
+.hero .kicker{font-size:max(13.5px,calc(var(--u)*1.75));letter-spacing:.11em;text-indent:.11em;white-space:nowrap;color:var(--ac)}
+.hero .note{font-size:max(19px,calc(var(--u)*2.7));margin-top:calc(var(--u)*1.1)}
+.hero .divider{margin:calc(var(--u)*3) auto}
+.hero .event-title{margin-bottom:calc(var(--u)*2.6)}
+.hero .names .amp{margin:calc(var(--u)*.6) 0 calc(var(--u)*.9)}
+
+/* Screen 3 — save the date */
+.dense{--bt:.235;--bb:.795}
+.dense .kicker{font-size:max(12px,calc(var(--u)*1.5))}
+.dense .divider{margin:calc(var(--u)*2.4) auto}
+.dense .bigdate{font-size:calc(var(--u)*8.4);margin-top:calc(var(--u)*1.2)}
+.dense .month{margin-top:calc(var(--u)*.8)}
+.dense .time{margin-top:calc(var(--u)*2)}
+.dense .countdown{margin:calc(var(--u)*2.8) 0 calc(var(--u)*3.2);padding:calc(var(--u)*1.6) 0}
+
+/* Screen 4 — venue address */
+.venue-addr{font-size:max(19px,calc(var(--u)*2.8));line-height:1.5;margin:calc(var(--u)*2.2) 0 calc(var(--u)*3.4)}
+
+/* Screen 5 — sign-off */
+.closing .sign .note{font-size:max(17px,calc(var(--u)*2.45));margin:0 0 calc(var(--u)*2.2)}
