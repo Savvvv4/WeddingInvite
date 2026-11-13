@@ -87,3 +87,30 @@ h1,h2{font-weight:400}
 .reveal{opacity:0;transform:translateY(calc(var(--u)*2.4));transition:opacity 1s ease .2s,transform 1s cubic-bezier(.2,.7,.2,1) .2s}
 .reveal.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.chevrons i{animation:none}.door,.cover .content{transition-duration:.01s;transition-delay:0s}.sound{transition:none}}
+
+
+/* Responsive viewport handling from the refreshed invitation. */
+:root{--svh:100vh;--pageh:100vh}
+@supports (height:100svh){:root{--svh:100svh;--pageh:100svh}}
+@supports (height:100dvh){:root{--pageh:100dvh}}
+:root{--now:var(--app-h,var(--pageh));--ph:max(var(--now),560px);--u:calc(max(var(--svh),560px)/100);--col:min(100vw,calc(max(var(--svh),560px)*.55))}
+html{overscroll-behavior:none;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.locked{overflow:hidden}
+.page{height:var(--ph);container-type:normal}
+.cover{height:var(--now);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;background:#f6ecd9}
+.cover::-webkit-scrollbar{display:none}
+.stage{height:max(100%,560px)}
+.art-teal,.art-garden,.art-frame,.art-new{background-repeat:no-repeat}
+.dense{--bt:.22;--bb:.75}
+.dense .divider{margin:calc(var(--u)*1.4) auto}
+.dense .bigdate{font-size:calc(var(--u)*8)}
+.dense .time{margin-top:calc(var(--u)*.9)}
+.dense .countdown{margin:calc(var(--u)*1.5) 0 calc(var(--u)*1.7);padding:calc(var(--u)*1) 0}
+.dense .btn{min-height:max(42px,calc(var(--u)*5.6))}
+.dense .link{min-height:40px;margin-top:calc(var(--u)*.2)}
+.mantra-en{margin-top:calc(var(--u)*.3);font:italic 400 max(14px,calc(var(--u)*2)) var(--serif);letter-spacing:.02em;color:var(--soft)}
+.cue{bottom:max(calc(var(--u)*4.5),calc(env(safe-area-inset-bottom) + 16px));gap:2px;min-height:48px;padding:calc(var(--u)*1.2) calc(var(--u)*3.4) calc(var(--u)*.7);border-radius:99px;border:1px solid #e6cc8e;background:#2f4a45;box-shadow:0 0 0 3px rgba(246,236,217,.6),0 8px 22px rgba(47,74,69,.45);color:#fff8ea;text-shadow:none;font:600 max(11.5px,calc(var(--u)*1.5)) var(--sans);letter-spacing:.26em;animation:bob 2.4s ease-in-out infinite}
+.cue>span:first-child{padding-left:.26em}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-4px)}}
+@media(max-height:559px){html{scroll-snap-type:y proximity}}
+@media(prefers-reduced-motion:reduce){.cue{animation:none}}
