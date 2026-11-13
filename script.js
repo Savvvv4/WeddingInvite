@@ -230,7 +230,7 @@
     const units = [['Days',86400000],['Hours',3600000],['Minutes',60000]];
     countdown.innerHTML = units.map(([label,size]) => {
       const value = Math.floor(remaining / size); remaining -= value * size;
-      return `<div><b>${String(value).padStart(2,'0')}</b><small>${label}</small></div>`;
+      return `<div>${String(value).padStart(2,'0')}<small>${label}</small></div>`;
     }).join('');
   }
   renderCountdown();
