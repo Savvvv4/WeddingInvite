@@ -217,3 +217,30 @@ html.invite-closed .invitation { opacity: 0; }
     transition-delay: 0ms !important;
   }
 }
+
+
+/* Stable, gesture-driven page navigation */
+html {
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+  overflow-y: auto;
+}
+html.locked { overflow: hidden !important; }
+body { overflow-x: hidden; }
+.invitation { touch-action: pan-x; }
+.page {
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 0;
+  scroll-snap-align: none !important;
+  scroll-snap-stop: normal !important;
+}
+.cover {
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+}
+.cover .stage { height: 100%; min-height: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+}
