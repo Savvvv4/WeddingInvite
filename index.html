@@ -98,10 +98,12 @@
         <div class="content reveal">
           <p class="kicker">Save the date</p>
           <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
-          <p class="weekday">Wednesday</p>
-          <p class="bigdate">02</p>
-          <p class="month">December 2026</p>
-          <p class="time">6 PM onwards</p>
+          <div class="datelock" role="text" aria-label="Wednesday, 2 December 2026, 6 PM onwards">
+            <span class="dl-side">Wednesday</span>
+            <span class="dl-day">02</span>
+            <span class="dl-side">6 PM<br>onwards</span>
+          </div>
+          <p class="dl-month">December 2026</p>
           <div class="countdown" id="countdown" aria-live="off"></div>
           <a class="btn" id="cal-main" href="#" role="button"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span>Add to Calendar</span></a>
         </div>
