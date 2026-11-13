@@ -118,7 +118,6 @@
     }, finishDelay);
   }
   openButton.addEventListener('click', openInvite);
-  openButton.focus({ preventScroll: true });
 
   const pages = Array.from(document.querySelectorAll('.invitation > .page'));
   let navigationLocked = true;

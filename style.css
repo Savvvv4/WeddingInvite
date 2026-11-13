@@ -276,8 +276,6 @@ body { overflow-x: hidden; }
 /* Buttons: solid, labelled with an icon, with a short helper line underneath */
 .btn{gap:10px;font-weight:600;letter-spacing:.14em}
 .btn .icon{width:20px;height:20px}
-.btn-open{position:relative;animation:invite-pulse 2.4s ease-in-out infinite}
-@keyframes invite-pulse{0%,100%{box-shadow:0 8px 22px rgba(47,74,69,.28),0 0 0 0 rgba(201,171,107,.55)}50%{box-shadow:0 8px 22px rgba(47,74,69,.28),0 0 0 9px rgba(201,171,107,0)}}
 .link{display:inline-flex;align-items:center;min-height:40px;margin-top:calc(var(--u)*.4);font:500 max(12.5px,calc(var(--u)*1.55)) var(--sans);letter-spacing:.04em;color:var(--btn-bg);text-decoration:underline;text-decoration-color:rgba(47,74,69,.45);text-underline-offset:4px}
 .link:hover{text-decoration-color:currentColor}
 .link:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:4px}
@@ -297,4 +295,16 @@ body { overflow-x: hidden; }
 .chevrons i{width:9px;height:9px;margin-top:-4px;border-width:0 2px 2px 0;transform:rotate(225deg);animation:nudge-up 1.8s ease-in-out infinite}
 .chevrons i:nth-child(2){animation-delay:.2s}
 @keyframes nudge-up{0%,100%{transform:translateY(3px) rotate(225deg);opacity:.35}50%{transform:translateY(-3px) rotate(225deg);opacity:1}}
-@media(prefers-reduced-motion:reduce){.btn-open,.chevrons i{animation:none}}
+@media(prefers-reduced-motion:reduce){.btn::after,.chevrons i{animation:none;opacity:0}}
+
+/* Compact buttons with a slow spotlight sweeping across them */
+.btn{position:relative;overflow:hidden;isolation:isolate;min-height:max(40px,calc(var(--u)*4.8));padding:0 calc(var(--u)*2.6);gap:8px;font:600 max(10.5px,calc(var(--u)*1.25))/1 var(--sans);letter-spacing:.16em;box-shadow:0 6px 16px rgba(47,74,69,.26)}
+.btn .icon{width:17px;height:17px}
+.btn::after{content:"";position:absolute;z-index:-1;top:-20%;bottom:-20%;left:0;width:45%;background:linear-gradient(100deg,transparent 0%,rgba(255,236,190,0) 15%,rgba(255,236,190,.38) 50%,rgba(255,236,190,0) 85%,transparent 100%);transform:translateX(-140%) skewX(-18deg);animation:spotlight 3.6s ease-in-out infinite;pointer-events:none}
+@keyframes spotlight{0%{transform:translateX(-140%) skewX(-18deg)}55%,100%{transform:translateX(330%) skewX(-18deg)}}
+.btn-open::after{animation-delay:1.2s}
+.cover .kicker{margin-bottom:calc(var(--u)*2)}
+.hero .event-title{font-size:max(17px,calc(var(--u)*2.6));letter-spacing:.12em;text-indent:.12em;white-space:nowrap;margin-bottom:calc(var(--u)*1.6)}
+.link{margin-top:calc(var(--u)*.2)}
+.art-frame{--bt:.19;--bb:.70}
+.dense .btn{min-height:max(40px,calc(var(--u)*4.8))}
