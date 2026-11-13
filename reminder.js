@@ -53,7 +53,6 @@
     window.setTimeout(() => URL.revokeObjectURL(url), 1500);
   }
 
-  const altCal = document.getElementById('cal-alt');
   function bind(el, action) {
     if (!el) return;
     if (action === 'google') {
@@ -65,9 +64,7 @@
   }
 
   // Apple devices get a calendar file (opens straight in Apple Calendar);
-  // everyone else goes to Google Calendar. The small link offers the other one.
+  // everyone else goes to Google Calendar.
   const isApple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
   bind(mainCal, isApple ? 'ics' : 'google');
-  bind(altCal, isApple ? 'google' : 'ics');
-  if (altCal) altCal.textContent = isApple ? 'or add to Google Calendar' : 'or add to Apple / Outlook calendar';
 })();

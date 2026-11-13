@@ -9,7 +9,7 @@ Static digital engagement invitation. Built with HTML, CSS and vanilla JavaScrip
 ## Screens
 1. Cover: lotus Ganesh ji motif, ॥ श्री गणेशाय नमः ॥, "You are invited" and the Open Invitation button
 2. The Khandelwal family's invitation, with a "Swipe up" prompt
-3. Save the date, with the 6 PM time, countdown, Add to Calendar button and a Google / Apple calendar link
+3. Save the date, with the 6 PM time, countdown, Add to Calendar button (Apple Calendar on iPhone/Mac, Google Calendar elsewhere)
 4. Venue and directions
 5. Closing note from Sunita & Vikrant
 
