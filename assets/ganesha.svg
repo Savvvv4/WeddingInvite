@@ -1,162 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 288" role="img" aria-label="Lord Ganesha">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 288" role="img" aria-label="Traditional Lord Ganesha motif">
   <defs>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#f3d58a" stop-opacity=".55"/>
-      <stop offset=".7" stop-color="#f3d58a" stop-opacity=".16"/>
-      <stop offset="1" stop-color="#f3d58a" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f0c27a"/>
-      <stop offset="1" stop-color="#dd9f52"/>
-    </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f4dc92"/>
-      <stop offset="1" stop-color="#c9a24a"/>
+      <stop offset="0" stop-color="#b88d4b"/>
+      <stop offset="1" stop-color="#76532b"/>
     </linearGradient>
-    <path id="petal" d="M0 0C-11 -8 -12 -26 0 -40C12 -26 11 -8 0 0Z"/>
-    <g id="ear">
-      <path d="M90 68C60 46 28 66 32 102C36 134 70 140 88 112Z" fill="url(#skin)" stroke="#6b4a22" stroke-width="1.3" stroke-linejoin="round"/>
-      <path d="M86 78C64 62 44 76 47 100C50 120 70 124 84 106Z" fill="#e8aa9a" opacity=".75"/>
-      <path d="M80 84C66 76 56 86 58 98" fill="none" stroke="#6b4a22" stroke-width=".8" stroke-linecap="round" opacity=".6"/>
-    </g>
-    <g id="eye">
-      <path d="M98 87C103 81 111 81 115 87" fill="none" stroke="#3a2a14" stroke-width="2" stroke-linecap="round"/>
-      <path d="M99 88C104 91 111 91 115 88" fill="none" stroke="#6b4a22" stroke-width=".9" stroke-linecap="round"/>
-      <path d="M96 79C102 73 111 73 117 78" fill="none" stroke="#6b4a22" stroke-width="1.1" stroke-linecap="round"/>
-    </g>
   </defs>
-
-  <!-- halo -->
-  <circle cx="120" cy="112" r="92" fill="url(#glow)"/>
-  <circle cx="120" cy="112" r="84" fill="none" stroke="#c9ab6b" stroke-width="1.3"/>
-  <circle cx="120" cy="112" r="78" fill="none" stroke="#c9ab6b" stroke-width="1.8" stroke-dasharray="1 5.5" stroke-linecap="round"/>
-
-  <!-- ears -->
-  <use href="#ear"/>
-  <use href="#ear" transform="translate(240 0) scale(-1 1)"/>
-
-  <!-- torso -->
-  <path d="M70 152C68 178 74 206 92 220L148 220C166 206 172 178 170 152C162 132 144 126 120 126C96 126 78 132 70 152Z" fill="url(#skin)" stroke="#6b4a22" stroke-width="1.3" stroke-linejoin="round"/>
-  <ellipse cx="120" cy="178" rx="36" ry="32" fill="#f4cf90" stroke="#b9843c" stroke-width=".9"/>
-  <path d="M115 184C118 189 124 189 126 184" fill="none" stroke="#9a6a2c" stroke-width="1" stroke-linecap="round"/>
-
-  <!-- sacred thread -->
-  <path d="M140 131C132 160 114 186 98 206" fill="none" stroke="#fff7e6" stroke-width="3" stroke-linecap="round"/>
-  <path d="M140 131C132 160 114 186 98 206" fill="none" stroke="#b9843c" stroke-width=".7" stroke-linecap="round"/>
-
-  <!-- waist band -->
-  <path d="M74 202C96 214 144 214 166 202L168 212C146 226 94 226 72 212Z" fill="url(#gold)" stroke="#6b4a22" stroke-width="1" stroke-linejoin="round"/>
-  <g fill="#2f4a45">
-    <circle cx="96" cy="213" r="2.2"/><circle cx="108" cy="216" r="2.2"/><circle cx="120" cy="217" r="2.2"/><circle cx="132" cy="216" r="2.2"/><circle cx="144" cy="213" r="2.2"/>
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="120" cy="118" r="88" stroke-width="1.1" opacity=".42"/>
+    <circle cx="120" cy="118" r="80" stroke-width=".8" stroke-dasharray="1 6" opacity=".65"/>
+    <path d="M120 35c-8 11-11 20-10 30m10-30c8 11 11 20 10 30" stroke-width="1.5"/>
+    <path d="M120 46l-5 9h10z" fill="#b88d4b" stroke-width="1"/>
+    <path d="M91 86c-19-23-42-17-47 2-5 19 7 40 31 45 10 2 19-2 25-10" stroke-width="4"/>
+    <path d="M149 86c19-23 42-17 47 2 5 19-7 40-31 45-10 2-19-2-25-10" stroke-width="4"/>
+    <path d="M91 87c-9-8-21-6-25 3-4 9 2 20 14 24" stroke-width="1.5" opacity=".7"/>
+    <path d="M149 87c9-8 21-6 25 3 4 9-2 20-14 24" stroke-width="1.5" opacity=".7"/>
+    <path d="M120 67c-28 0-47 18-47 43 0 24 19 42 47 42s47-18 47-42c0-25-19-43-47-43z" stroke-width="3.2"/>
+    <path d="M101 105c5-7 12-7 17-1m4 0c5-6 12-6 17 1" stroke-width="2.2"/>
+    <path d="M120 109c-1 20-4 34-1 47 3 15 17 21 29 13 8-5 7-16-2-18-6-1-10 4-7 9" stroke-width="4"/>
+    <path d="M120 109c-1 20-4 34-1 47" stroke-width="1.2" opacity=".65"/>
+    <path d="M91 151c-9 12-17 24-18 39m76-39c9 12 17 24 18 39" stroke-width="3"/>
+    <path d="M74 190c-10 9-16 19-17 30m109-30c10 9 16 19 17 30" stroke-width="2.5"/>
+    <path d="M92 179c8 11 18 16 28 16s20-5 28-16" stroke-width="2"/>
+    <path d="M88 206c10 7 21 10 32 10s22-3 32-10" stroke-width="2"/>
+    <path d="M120 192l-8 13 8 8 8-8z" fill="#b88d4b" stroke-width="1.2"/>
+    <path d="M88 232c11-10 21-14 32-14s21 4 32 14" stroke-width="2"/>
+    <path d="M62 244c18-8 38-12 58-12s40 4 58 12" stroke-width="1.5"/>
+    <path d="M120 20v-9m-5 4h10" stroke-width="1.4"/>
+    <path d="M38 118h-8m4-4v8m168-4h8m-4-4v8" stroke-width="1.2"/>
   </g>
-
-  <!-- crossed legs -->
-  <path d="M50 232C48 216 76 208 120 214C164 208 192 216 190 232C188 246 160 250 120 248C80 250 52 246 50 232Z" fill="#dd9f52" stroke="#6b4a22" stroke-width="1.3" stroke-linejoin="round"/>
-  <path d="M82 222C100 230 140 230 158 222" fill="none" stroke="#9a6a2c" stroke-width="1" stroke-linecap="round"/>
-  <ellipse cx="62" cy="234" rx="12" ry="8" fill="#f0c27a" stroke="#6b4a22" stroke-width="1"/>
-  <ellipse cx="178" cy="234" rx="12" ry="8" fill="#f0c27a" stroke="#6b4a22" stroke-width="1"/>
-  <circle cx="62" cy="234" r="2.6" fill="#e8aa9a"/>
-  <circle cx="178" cy="234" r="2.6" fill="#e8aa9a"/>
-
-  <!-- lotus seat (in front of the legs) -->
-  <g fill="#f8dcd6" stroke="#9c6b6b" stroke-width=".9" stroke-linejoin="round">
-    <use href="#petal" transform="translate(30 284) rotate(-24)"/>
-    <use href="#petal" transform="translate(210 284) rotate(24)"/>
-    <use href="#petal" transform="translate(52 284) rotate(-18)"/>
-    <use href="#petal" transform="translate(188 284) rotate(18)"/>
-    <use href="#petal" transform="translate(74 284) rotate(-12)"/>
-    <use href="#petal" transform="translate(166 284) rotate(12)"/>
-    <use href="#petal" transform="translate(96 284) rotate(-6)"/>
-    <use href="#petal" transform="translate(144 284) rotate(6)"/>
-    <use href="#petal" transform="translate(120 284)"/>
-  </g>
-  <path d="M26 286C70 281 170 281 214 286" fill="none" stroke="#c9ab6b" stroke-width="1.6" stroke-linecap="round"/>
-
-  <!-- necklace -->
-  <path d="M92 134C100 156 140 156 148 134" fill="none" stroke="url(#gold)" stroke-width="3.6" stroke-linecap="round"/>
-  <path d="M92 134C100 156 140 156 148 134" fill="none" stroke="#6b4a22" stroke-width=".6" stroke-linecap="round" stroke-dasharray="2 3"/>
-  <path d="M120 150L124 157L120 164L116 157Z" fill="#2f4a45" stroke="#c9a24a" stroke-width="1"/>
-
-  <!-- upper left arm: lotus bud -->
-  <g stroke-linecap="round" fill="none">
-    <path d="M82 144C70 138 58 126 52 110" stroke="#6b4a22" stroke-width="15"/>
-    <path d="M82 144C70 138 58 126 52 110" stroke="url(#skin)" stroke-width="12.2"/>
-  </g>
-  <path d="M65.5 138L74.5 130" stroke="#6b4a22" stroke-width="5.6" stroke-linecap="butt"/>
-  <path d="M65.5 138L74.5 130" stroke="url(#gold)" stroke-width="3.6" stroke-linecap="butt"/>
-  <circle cx="51" cy="106" r="8" fill="url(#skin)" stroke="#6b4a22" stroke-width="1.2"/>
-  <path d="M51 108L48 70" stroke="#4d7a5e" stroke-width="2" stroke-linecap="round"/>
-  <path d="M48 70C41 62 41 52 48 46C55 52 55 62 48 70Z" fill="#f3b9b1" stroke="#9c6b6b" stroke-width=".9" stroke-linejoin="round"/>
-  <path d="M48 70C37 66 33 56 37 50C44 54 47 60 48 70Z" fill="#f8d4cf" stroke="#9c6b6b" stroke-width=".8" stroke-linejoin="round"/>
-  <path d="M48 70C59 66 63 56 59 50C52 54 49 60 48 70Z" fill="#f8d4cf" stroke="#9c6b6b" stroke-width=".8" stroke-linejoin="round"/>
-
-  <!-- upper right arm: axe -->
-  <g stroke-linecap="round" fill="none">
-    <path d="M158 144C170 138 182 126 188 110" stroke="#6b4a22" stroke-width="15"/>
-    <path d="M158 144C170 138 182 126 188 110" stroke="url(#skin)" stroke-width="12.2"/>
-  </g>
-  <path d="M174.5 138L165.5 130" stroke="#6b4a22" stroke-width="5.6" stroke-linecap="butt"/>
-  <path d="M174.5 138L165.5 130" stroke="url(#gold)" stroke-width="3.6" stroke-linecap="butt"/>
-  <path d="M190 118L196 58" stroke="#6b4a22" stroke-width="2.6" stroke-linecap="round"/>
-  <path d="M196 62C214 54 224 74 213 92C207 99 199 97 196 93C204 86 205 72 196 62Z" fill="url(#gold)" stroke="#6b4a22" stroke-width="1.2" stroke-linejoin="round"/>
-  <path d="M203 70C208 74 208 82 205 87" fill="none" stroke="#fff7e6" stroke-width="1" stroke-linecap="round" opacity=".8"/>
-  <circle cx="189" cy="108" r="8" fill="url(#skin)" stroke="#6b4a22" stroke-width="1.2"/>
-
-  <!-- lower left arm: modak -->
-  <g stroke-linecap="round" fill="none">
-    <path d="M80 168C66 174 56 184 52 194" stroke="#6b4a22" stroke-width="15"/>
-    <path d="M80 168C66 174 56 184 52 194" stroke="url(#skin)" stroke-width="12.2"/>
-  </g>
-  <path d="M61.9 173.6L70.1 182.4" stroke="#6b4a22" stroke-width="5.6" stroke-linecap="butt"/>
-  <path d="M61.9 173.6L70.1 182.4" stroke="url(#gold)" stroke-width="3.6" stroke-linecap="butt"/>
-  <circle cx="51" cy="197" r="8" fill="url(#skin)" stroke="#6b4a22" stroke-width="1.2"/>
-  <path d="M51 178C43 184 41 192 45 198C49 202 53 202 57 198C61 192 59 184 51 178Z" fill="#f6dd9c" stroke="#6b4a22" stroke-width="1.1" stroke-linejoin="round"/>
-  <path d="M46 195C50 192 54 193 56 196" fill="none" stroke="#b9843c" stroke-width=".8" stroke-linecap="round"/>
-
-  <!-- lower right arm: blessing -->
-  <g stroke-linecap="round" fill="none">
-    <path d="M160 168C174 174 184 184 188 194" stroke="#6b4a22" stroke-width="15"/>
-    <path d="M160 168C174 174 184 184 188 194" stroke="url(#skin)" stroke-width="12.2"/>
-  </g>
-  <path d="M178.1 173.6L169.9 182.4" stroke="#6b4a22" stroke-width="5.6" stroke-linecap="butt"/>
-  <path d="M178.1 173.6L169.9 182.4" stroke="url(#gold)" stroke-width="3.6" stroke-linecap="butt"/>
-  <g stroke="#6b4a22" stroke-width="1.1" stroke-linejoin="round" fill="url(#skin)">
-    <rect x="178" y="170" width="4.6" height="14" rx="2.3"/>
-    <rect x="183" y="167" width="4.6" height="16" rx="2.3"/>
-    <rect x="188" y="168" width="4.6" height="15" rx="2.3"/>
-    <rect x="193" y="172" width="4.4" height="12" rx="2.2" transform="rotate(8 195 178)"/>
-    <ellipse cx="188" cy="192" rx="10" ry="10"/>
-  </g>
-  <circle cx="188" cy="192" r="3.4" fill="#e8aa9a" stroke="#9c6b6b" stroke-width=".7"/>
-
-  <!-- head -->
-  <ellipse cx="120" cy="92" rx="39" ry="37" fill="url(#skin)" stroke="#6b4a22" stroke-width="1.3"/>
-
-  <!-- crown -->
-  <path d="M86 70C86 56 96 52 100 36L109 48L120 24L131 48L140 36C144 52 154 56 154 70C140 62 100 62 86 70Z" fill="url(#gold)" stroke="#6b4a22" stroke-width="1.3" stroke-linejoin="round"/>
-  <path d="M88 68C104 60 136 60 152 68" fill="none" stroke="#6b4a22" stroke-width=".9"/>
-  <path d="M120 24C116 18 118 12 120 9C122 12 124 18 120 24Z" fill="#f3b9b1" stroke="#9c6b6b" stroke-width=".8" stroke-linejoin="round"/>
-  <path d="M120 44L125 51L120 58L115 51Z" fill="#2f4a45" stroke="#fff7e6" stroke-width=".9"/>
-  <g fill="#fff7e6" opacity=".9"><circle cx="100" cy="56" r="1.8"/><circle cx="140" cy="56" r="1.8"/><circle cx="108" cy="60" r="1.5"/><circle cx="132" cy="60" r="1.5"/></g>
-
-  <!-- tilak -->
-  <path d="M120 68L120 80" stroke="#b5332e" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M113 72C115 80 125 80 127 72" fill="none" stroke="#b5332e" stroke-width="1.3" stroke-linecap="round"/>
-
-  <!-- eyes -->
-  <use href="#eye"/>
-  <use href="#eye" transform="translate(240 0) scale(-1 1)"/>
-
-  <!-- tusks -->
-  <path d="M133 114C143 114 150 121 148 131C145 125 140 121 134 120Z" fill="#fffaf0" stroke="#6b4a22" stroke-width="1" stroke-linejoin="round"/>
-  <path d="M107 116C101 117 99 122 100 127C102 123 105 121 108 121Z" fill="#fffaf0" stroke="#6b4a22" stroke-width="1" stroke-linejoin="round"/>
-
-  <!-- trunk -->
-  <path d="M126 80C129 96 137 122 133 144C129 160 114 172 98 168C90 166 88 158 94 155C99 153 104 156 102 161C110 160 116 150 115 134C114 118 113 98 114 80C116 76 124 76 126 80Z" fill="#f4cf90" stroke="#6b4a22" stroke-width="1.3" stroke-linejoin="round"/>
-  <g fill="none" stroke="#b9843c" stroke-width=".9" stroke-linecap="round">
-    <path d="M114 100C119 102 124 102 128 100"/>
-    <path d="M114 112C119 114 125 114 130 112"/>
-    <path d="M115 124C120 126 126 126 131 124"/>
-    <path d="M115 136C120 138 126 138 132 136"/>
+  <path d="M120 76l3 7-3 7-3-7z" fill="#a44d3c"/>
+  <g fill="#b88d4b">
+    <circle cx="120" cy="18" r="2.2"/><circle cx="32" cy="118" r="2"/><circle cx="208" cy="118" r="2"/>
+    <circle cx="68" cy="58" r="1.8"/><circle cx="172" cy="58" r="1.8"/>
   </g>
 </svg>
