@@ -171,3 +171,49 @@ html.invite-closed .invitation {
   .invitation { transition: none; }
   .cue { animation: none; }
 }
+
+
+/* Final transition and one-screen navigation system */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background: #f6ecd9;
+}
+body { background: #f6ecd9; }
+.invitation {
+  opacity: 1;
+  transition: opacity 1.15s ease;
+  touch-action: pan-x;
+}
+html.invite-closed .invitation { opacity: 0; }
+.page {
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.cover {
+  background-color: #f6ecd9;
+  opacity: 1;
+  transition: opacity .65s ease 1s;
+}
+.cover.open {
+  pointer-events: none;
+  opacity: 0;
+}
+.cover .door {
+  transition-duration: 1.45s;
+}
+.cover.open .door-l { transform: translate3d(-101%,0,0); }
+.cover.open .door-r { transform: translate3d(101%,0,0); }
+.cover .content { transition: opacity .65s ease, transform .8s ease; }
+.cover.open .content { opacity: 0; transform: scale(1.025); }
+.content { text-shadow: 0 1px 7px rgba(255,247,234,.28); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cover, .cover .door, .cover .content, .invitation, .reveal {
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
