@@ -3,13 +3,13 @@
 Static digital engagement invitation. Built with HTML, CSS and vanilla JavaScript.
 
 ## Event
-- Wednesday, 2 December 2026, 6 PM
+- Wednesday, 2 December 2026, 5 PM
 - MYST by The Zora, Jawahar Lal Nehru Stadium, Lodhi Road, New Delhi
 
 ## Screens
 1. Cover: lotus Ganesh ji motif, ॥ श्री गणेशाय नमः ॥, "You are invited" and the Open Invitation button
 2. The Khandelwal family's invitation, with a "Swipe up" prompt
-3. Save the date, with the 6 PM time, countdown, Add to Calendar button (Apple Calendar on iPhone/Mac, Google Calendar elsewhere)
+3. Save the date, with the 5 PM time, countdown, Add to Calendar button (Apple Calendar on iPhone/Mac, Google Calendar elsewhere)
 4. Venue and directions
 5. Closing note from Sunita & Vikrant
 
